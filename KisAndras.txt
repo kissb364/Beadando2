@@ -1,0 +1,14 @@
+//Kis András készítette
+CREATE (user1)-[:OWNS]->(key1)
+CREATE (user2)-[:OWNS]->(key2)
+
+CREATE (user1)-[:ENCRYPTS]->(data1)
+CREATE (user2)-[:ENCRYPTS]->(data2)
+
+//1.Minden felhasználó adatainak lekérése
+MATCH (u:User)
+RETURN u.id, u.username, u.password;
+
+//2.Egy adott felhasználóhoz tartozó titkosítási kulcs lekérése
+MATCH (u:User {username: 'Vidi'})-[:OWNS]->(k:EncryptionKey)
+RETURN k.key;
