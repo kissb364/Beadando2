@@ -1,0 +1,12 @@
+//Kiss Bálint készítette
+// Felhasználók létrehozása
+CREATE (user1:User {id: 1, username: 'Vidi', password: 'vidi'})
+CREATE (user2:User {id: 2, username: 'Fradista', password: 'fradi'})
+
+// Titkosítási kulcsok létrehozása
+CREATE (key1:EncryptionKey {userId: 1, key: 'xJKo93lM$'})
+CREATE (key2:EncryptionKey {userId: 2, key: 'aPwle$12#'})
+
+// Titkosított adatok létrehozása és kapcsolatok kialakítása a felhasználókkal és a kulcsokkal
+CREATE (data1:EncryptedData {id: 1, data: 'Kikapott a vidi'})
+CREATE (data2:EncryptedData {id: 2, data: 'Nyert a fradi'})
