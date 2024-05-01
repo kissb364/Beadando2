@@ -1,0 +1,12 @@
+//Dardos Dániel készítette
+//3.Egy adott felhasználó által titkosított adatok lekérése
+MATCH (u:User {username: 'Fradista'})-[:ENCRYPTS]->(d:EncryptedData)
+RETURN d.data;
+
+//4.Minden felhasználóhoz tartozó titkosítási kulcsok és az azokhoz tartozó felhasználók lekérése
+MATCH (u:User)-[:OWNS]->(k:EncryptionKey)
+RETURN u.username, k.key;
+
+//5.A felhasználók száma, akiknek van titkosított adatuk az adatbázisban
+MATCH (u:User)-[:ENCRYPTS]->(:EncryptedData)
+RETURN COUNT(DISTINCT u) AS num_users_with_encrypted_data;
